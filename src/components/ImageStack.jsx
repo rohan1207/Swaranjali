@@ -57,7 +57,7 @@ const ImageStack = () => {
             <img
               src={src}
               alt={`About us image ${i + 1}`}
-              className="w-full h-full object-cover rounded-lg shadow-2xl"
+              className="w-full h-full object-cover rounded-md shadow-2xl"
             />
           </motion.div>
         ))}

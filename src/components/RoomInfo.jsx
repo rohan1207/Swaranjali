@@ -67,84 +67,101 @@ const RoomInfo = () => {
 
   return (
     <div>
-      <div className="text-center py-12">
-        <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#6D2C2C] tracking-tight mb-3 drop-shadow-sm">
+      {/* Header Section */}
+      <div className="text-center py-8 sm:py-12">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif font-bold text-[#6D2C2C] tracking-tight mb-2 sm:mb-3 drop-shadow-sm px-4">
           Our Royal Rooms At Swaranjali
         </h2>
-        <h3 className="text-lg md:text-xl font-light text-stone-700 max-w-2xl mx-auto leading-relaxed">
+        <h3 className="text-sm sm:text-lg md:text-xl font-light text-stone-700 max-w-2xl mx-auto leading-relaxed px-4">
           Every room at{" "}
           <span className="font-semibold text-[#6D2C2C]">Swaranjali Hotel</span>{" "}
           tells a story of comfort and class.
         </h3>
       </div>
-      <div className="min-h-[80vh] bg-gradient-to-br from-amber-50 to-stone-100 flex">
-        {/* Left Panel - Room List */}
-        <div className="w-96 bg-gradient-to-b from-stone-200 to-stone-100 p-8 flex flex-col justify-center">
-          <div className="space-y-6">
-            {rooms.map((room, index) => (
-              <motion.div
-                key={room.id}
-                className={`flex items-center justify-between p-4 rounded-md cursor-pointer transition-all duration-300 ${
-                  selectedRoom.id === room.id
-                    ? "bg-gradient-to-r from-[#6D2C2C] to-[#6D2C2C] text-white shadow-lg"
-                    : "hover:bg-white/50 text-stone-700"
-                }`}
-                onClick={() => setSelectedRoom(room)}
-                whileHover={{ x: 10 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <div className="flex items-center gap-4">
-                  <span
-                    className={`text-sm font-medium ${
+
+      {/* Desktop View - Original Layout */}
+      <div className="hidden md:block min-h-[80vh] bg-gradient-to-br from-amber-50 to-stone-100">
+        <div className="flex">
+          {/* Left Panel - Room List */}
+          <div className="w-96 bg-gradient-to-b from-stone-200 to-stone-100 p-8 flex flex-col justify-center">
+            <div className="space-y-6">
+              {rooms.map((room, index) => (
+                <motion.div
+                  key={room.id}
+                  className={`flex items-center justify-between p-4 rounded-md cursor-pointer transition-all duration-300 ${
+                    selectedRoom.id === room.id
+                      ? "bg-gradient-to-r from-[#6D2C2C] to-[#6D2C2C] text-white shadow-lg"
+                      : "hover:bg-white/50 text-stone-700"
+                  }`}
+                  onClick={() => setSelectedRoom(room)}
+                  whileHover={{ x: 10 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div className="flex items-center gap-4">
+                    <span
+                      className={`text-sm font-medium ${
+                        selectedRoom.id === room.id
+                          ? "text-white/80"
+                          : "text-stone-500"
+                      }`}
+                    >
+                      {room.id}
+                    </span>
+                    <span className="font-medium text-lg">
+                      {amenityLabels[index]}
+                    </span>
+                  </div>
+                  <motion.span
+                    className={`text-xl transform transition-all duration-300 ${
                       selectedRoom.id === room.id
-                        ? "text-white/80"
-                        : "text-stone-500"
+                        ? "translate-x-0 opacity-100 text-white"
+                        : "-translate-x-2 opacity-60 text-stone-600"
                     }`}
                   >
-                    {room.id}
-                  </span>
-                  <span className="font-medium text-lg">
-                    {amenityLabels[index]}
-                  </span>
-                </div>
-                <motion.span
-                  className={`text-xl transform transition-all duration-300 ${
-                    selectedRoom.id === room.id
-                      ? "translate-x-0 opacity-100 text-white"
-                      : "-translate-x-2 opacity-60 text-stone-600"
-                  }`}
-                >
-                  →
-                </motion.span>
-              </motion.div>
-            ))}
+                    →
+                  </motion.span>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Main Content Area */}
-        <div className="flex-1 relative">
-          {/* Room Image */}
-          <motion.div className="absolute inset-0" key={selectedRoom.id}>
-            <motion.img
-              src={selectedRoom.image}
-              alt={selectedRoom.name}
-              className="w-full h-full object-cover"
-              initial={{ scale: 1.1, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6 }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
-          </motion.div>
+          {/* Main Content Area */}
+          <div className="flex-1 relative">
+            {/* Room Image */}
+            <motion.div className="absolute inset-0" key={selectedRoom.id}>
+              <motion.img
+                src={selectedRoom.image}
+                alt={selectedRoom.name}
+                className="w-full h-full object-cover"
+                initial={{ scale: 1.1, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
+            </motion.div>
 
-          {/* Right Info Panel */}
-          <div className="absolute top-0 right-0 w-96 h-full bg-gradient-to-l from-white via-white/95 to-white/80 p-8 flex flex-col justify-center">
-            <motion.div
-              key={selectedRoom.id}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-6"
-            >
+            {/* Right Info Panel */}
+            <div className="absolute top-0 right-0 w-96 h-full bg-gradient-to-l from-white via-white/95 to-white/80 p-8 flex flex-col justify-center">
+              <motion.div
+                key={selectedRoom.id}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="space-y-6"
+              >
+                <div>
+                  <p className="text-amber-600 text-sm font-medium tracking-wider uppercase mb-2">
+                    {selectedRoom.title}
+                  </p>
+                  <h1 className="text-4xl font-bold text-stone-900 mb-4 leading-tight">
+                    {selectedRoom.name}
+                  </h1>
+                  <p className="text-stone-600 leading-relaxed text-sm">
+                    {selectedRoom.description}
+                  </p>
+                </div>
+              </motion.div>
+
               {/* Bottom Info Panel */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white via-white to-white/95 p-8">
                 <div className="flex justify-between items-end">
@@ -172,11 +189,67 @@ const RoomInfo = () => {
                   </div>
                 </div>
               </div>
-              <div>
-                <p className="text-amber-600 text-sm font-medium tracking-wider uppercase mb-2">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile View - Compact Card Interface */}
+      <div className="md:hidden bg-gradient-to-br from-amber-50 to-stone-100 pb-6">
+        {/* Room Selection Tabs */}
+        <div className="px-4 mb-4">
+          <div className="flex overflow-x-auto space-x-2 pb-2">
+            {rooms.map((room, index) => (
+              <motion.button
+                key={room.id}
+                onClick={() => setSelectedRoom(room)}
+                className={`flex-shrink-0 px-3 py-2 rounded-full text-xs font-medium transition-all duration-300 ${
+                  selectedRoom.id === room.id
+                    ? "bg-[#6D2C2C] text-white shadow-md"
+                    : "bg-white/80 text-stone-700 hover:bg-white"
+                }`}
+                whileTap={{ scale: 0.95 }}
+              >
+                {amenityLabels[index]}
+              </motion.button>
+            ))}
+          </div>
+        </div>
+
+        {/* Selected Room Card */}
+        <div className="px-4">
+          <motion.div
+            key={selectedRoom.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-md shadow-lg overflow-hidden"
+          >
+            {/* Room Image */}
+            <div className="relative h-48 sm:h-56">
+              <motion.img
+                src={selectedRoom.image}
+                alt={selectedRoom.name}
+                className="w-full h-full object-cover"
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.6 }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              
+              {/* Room ID Badge */}
+              <div className="absolute top-4 left-4 bg-[#6D2C2C] text-white px-3 py-1 rounded-full text-xs font-medium">
+                Room {selectedRoom.id}
+              </div>
+            </div>
+
+            {/* Room Details */}
+            <div className="p-4 sm:p-6">
+              <div className="mb-4">
+                <p className="text-amber-600 text-xs font-medium tracking-wider uppercase mb-1">
                   {selectedRoom.title}
                 </p>
-                <h1 className="text-4xl font-bold text-stone-900 mb-4 leading-tight">
+                <h1 className="text-xl sm:text-2xl font-bold text-stone-900 mb-2 leading-tight">
                   {selectedRoom.name}
                 </h1>
                 <p className="text-stone-600 leading-relaxed text-sm">
@@ -184,36 +257,43 @@ const RoomInfo = () => {
                 </p>
               </div>
 
-              {/* Amenities
-              <div className="grid grid-cols-3 gap-4 ">
-                <div className="text-center">
-                  <div className="w-10 h-10 bg-amber-100 rounded-md flex items-center justify-center mx-auto mb-2">
-                    <span className="text-amber-600 text-lg">🍳</span>
-                  </div>
-                  <p className="text-xs font-medium text-stone-700">
-                    BREAKFAST
+              {/* Price and Book Button */}
+              <div className="flex items-center justify-between">
+                <div className="bg-stone-50 px-4 py-3 rounded-md">
+                  <p className="text-stone-600 text-xs mb-1">Starting from</p>
+                  <p className="text-xl sm:text-2xl font-bold text-stone-900">
+                    ₹{selectedRoom.price.toLocaleString()}
                   </p>
-                  <p className="text-xs text-stone-500">INCLUDED</p>
                 </div>
 
-                <div className="text-center">
-                  <div className="w-10 h-10 bg-amber-100 rounded-md flex items-center justify-center mx-auto mb-2">
-                    <span className="text-amber-600 text-lg">🧺</span>
-                  </div>
-                  <p className="text-xs font-medium text-stone-700">LAUNDRY</p>
-                  <p className="text-xs text-stone-500">FACILITIES</p>
-                </div>
+                <motion.button
+                  className="bg-[#6D2C2C] text-white px-6 py-3 rounded-md flex items-center gap-2 group shadow-md"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="font-medium text-sm">BOOK NOW</span>
+                  <motion.span className="transform transition-transform group-hover:translate-x-1">
+                    →
+                  </motion.span>
+                </motion.button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
 
-                <div className="text-center">
-                  <div className="w-10 h-10 bg-amber-100 rounded-md flex items-center justify-center mx-auto mb-2">
-                    <span className="text-amber-600 text-lg">🚗</span>
-                  </div>
-                  <p className="text-xs font-medium text-stone-700">PICKUP</p>
-                  <p className="text-xs text-stone-500">AND DROP</p>
-                </div>
-              </div> */}
-            </motion.div>
-          </div>
+        {/* Room Navigation Dots */}
+        <div className="flex justify-center mt-4 space-x-2">
+          {rooms.map((room) => (
+            <button
+              key={room.id}
+              onClick={() => setSelectedRoom(room)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                selectedRoom.id === room.id
+                  ? "bg-[#6D2C2C] w-6"
+                  : "bg-stone-300 hover:bg-stone-400"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </div>

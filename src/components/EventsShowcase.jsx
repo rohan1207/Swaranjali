@@ -90,7 +90,7 @@ const EventsShowcase = () => {
         </motion.div>
 
         {/* Event Panels */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {eventTypes.map((event, i) => (
             <motion.div
               key={event.name}
@@ -99,7 +99,7 @@ const EventsShowcase = () => {
               initial="initial"
               whileInView="animate"
               viewport={{ once: true, amount: 0.5 }}
-              className="group relative h-96 rounded-md overflow-hidden shadow-lg"
+              className="group relative h-48 sm:h-64 md:h-96 rounded-md overflow-hidden shadow-lg"
             >
               <motion.div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-in-out"
@@ -107,11 +107,11 @@ const EventsShowcase = () => {
                 whileHover={{ scale: 1.1 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-              <div className="absolute bottom-0 left-0 p-6 text-white">
-                <h3 className="text-2xl font-semibold tracking-wide">
+              <div className="absolute bottom-0 left-0 p-3 sm:p-4 md:p-6 text-white">
+                <h3 className="text-sm sm:text-lg md:text-2xl font-semibold tracking-wide leading-tight">
                   {event.name}
                 </h3>
-                <p className="mt-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto">
+                <p className="mt-1 sm:mt-2 text-xs sm:text-sm md:text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto leading-relaxed">
                   {event.description}
                 </p>
               </div>

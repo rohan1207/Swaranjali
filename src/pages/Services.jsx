@@ -144,11 +144,11 @@ const Services = () => {
               with elegance, modern design, and heartfelt hospitality.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-10">
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                className="group relative rounded-md shadow-lg overflow-hidden transform transition duration-500 hover:shadow-2xl hover:-translate-y-2"
+                className="group relative rounded-md shadow-lg overflow-hidden transform transition duration-500 hover:shadow-2xl hover:-translate-y-2 h-48 sm:h-64 md:h-80"
                 variants={cardVariants}
                 initial="offscreen"
                 whileInView="onscreen"
@@ -159,15 +159,15 @@ const Services = () => {
                   alt={service.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-center p-8">
-                  <h3 className="text-3xl font-medium text-white mb-3 tracking-wide">
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-center p-3 sm:p-4 md:p-8">
+                  <h3 className="text-sm sm:text-lg md:text-3xl font-medium text-white mb-2 sm:mb-3 tracking-wide leading-tight">
                     {service.title}
                   </h3>
-                  <div className="absolute inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center text-center p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <p className="text-white text-sm leading-relaxed font-light tracking-wide flex-grow">
+                  <div className="absolute inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center text-center p-3 sm:p-4 md:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <p className="text-white text-xs sm:text-sm leading-relaxed font-light tracking-wide flex-grow line-clamp-2 md:line-clamp-none">
                       {service.description}
                     </p>
-                    <button className="mt-6 inline-block px-6 py-2 text-white border border-amber-300 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-sm font-medium">
+                    <button className="mt-3 sm:mt-4 md:mt-6 inline-block px-4 py-2 sm:px-6 sm:py-2 text-white border border-amber-300 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-xs sm:text-sm font-medium">
                       Read More
                     </button>
                   </div>

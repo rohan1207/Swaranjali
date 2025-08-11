@@ -48,19 +48,19 @@ const ContactUs = () => {
             <form action="#" method="POST" className="space-y-6">
               <div>
                 <label htmlFor="name" className="sr-only">Name</label>
-                <input type="text" name="name" id="name" placeholder="Your Name" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-yellow-600 focus:border-yellow-600 transition" />
+                <input type="text" name="name" id="name" placeholder="Your Name" className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-yellow-600 focus:border-yellow-600 transition" />
               </div>
               <div>
                 <label htmlFor="email" className="sr-only">Email</label>
-                <input type="email" name="email" id="email" placeholder="Your Email" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-yellow-600 focus:border-yellow-600 transition" />
+                <input type="email" name="email" id="email" placeholder="Your Email" className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-yellow-600 focus:border-yellow-600 transition" />
               </div>
               <div>
                 <label htmlFor="subject" className="sr-only">Subject</label>
-                <input type="text" name="subject" id="subject" placeholder="Subject" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-yellow-600 focus:border-yellow-600 transition" />
+                <input type="text" name="subject" id="subject" placeholder="Subject" className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-yellow-600 focus:border-yellow-600 transition" />
               </div>
               <div>
                 <label htmlFor="message" className="sr-only">Message</label>
-                <textarea name="message" id="message" rows="6" placeholder="Your Message" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-yellow-600 focus:border-yellow-600 transition"></textarea>
+                <textarea name="message" id="message" rows="6" placeholder="Your Message" className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-yellow-600 focus:border-yellow-600 transition"></textarea>
               </div>
               <div>
                 <motion.button 
@@ -98,7 +98,7 @@ const ContactUs = () => {
               </div>
             </div>
 
-            <div className="mt-12 h-80 rounded-lg overflow-hidden shadow-lg">
+            <div className="mt-12 h-80 rounded-md overflow-hidden shadow-lg">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.881319985964!2d74.8884722148993!3d21.3519449858089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bde9c1c6f5c1c1b%3A0x1b8f8b8f8b8f8b8f!2sSwaranjali%20Hotel%20%26%20Lawns!5e0!3m2!1sen!2sin!4v1620048453413!5m2!1sen!2sin"
                 width="100%"

@@ -53,7 +53,7 @@ const GalleryPage = () => {
   return (
     <>
       <div className="bg-[#FDFDFD] min-h-screen font-sans">
-        <header className="py-16 md:py-24 text-center">
+        <header className="py-16 md:py-24 text-center mt-8">
           <motion.h1 
             className="text-5xl md:text-7xl font-serif font-light text-gray-800"
             initial={{ opacity: 0, y: 20 }}
@@ -88,7 +88,7 @@ const GalleryPage = () => {
             {galleryImages.map((image, index) => (
               <motion.div
                 key={image.id}
-                className={`group relative overflow-hidden rounded-lg cursor-pointer ${image.span || ''}`}
+                className={`group relative overflow-hidden rounded-md cursor-pointer ${image.span || ''}`}
                 onClick={() => openLightbox(index)}
                 variants={imageVariants}
                 layout

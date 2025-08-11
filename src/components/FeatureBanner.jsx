@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   FaUtensils,
@@ -62,10 +62,14 @@ const features = [
 ];
 
 const FeatureBanner = () => {
+  // Create duplicated features array for seamless loop
+  const duplicatedFeatures = [...features, ...features];
+
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Desktop View - Original Layout */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -132,6 +136,74 @@ const FeatureBanner = () => {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* Mobile View - Continuous Horizontal Sliding Carousel */}
+        <div className="md:hidden overflow-hidden">
+          <motion.div
+            className="flex"
+            animate={{
+              x: [0, -50 * duplicatedFeatures.length / 2],
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 20,
+                ease: "linear",
+              },
+            }}
+          >
+            {duplicatedFeatures.map((feature, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 w-1/2 px-2"
+              >
+                <div className="flex flex-col items-center text-center">
+                  {/* Circle Background - Smaller for mobile */}
+                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 mb-3 sm:mb-4">
+                    {/* Static circle */}
+                    <div className="absolute inset-0 rounded-full bg-[#FDF8F6]" />
+
+                    {/* Animated circle stroke */}
+                    <svg
+                      className="absolute inset-0 w-full h-full -rotate-90 transform"
+                      viewBox="0 0 100 100"
+                    >
+                      <motion.circle
+                        cx="50"
+                        cy="50"
+                        r="48"
+                        stroke="#6D2C2C"
+                        strokeWidth="2"
+                        fill="none"
+                        strokeDasharray="301.59"
+                        initial={{ strokeDashoffset: 301.59 }}
+                        animate={{ strokeDashoffset: 0 }}
+                        transition={{ duration: 0.6, delay: (index % 4) * 0.1 }}
+                      />
+                    </svg>
+
+                    {/* Icon */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <feature.icon
+                        className="w-6 h-6 sm:w-8 sm:h-8 text-[#6D2C2C]"
+                        aria-hidden="true"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Text Content */}
+                  <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1 sm:mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-500 leading-relaxed px-1">
+                    {feature.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

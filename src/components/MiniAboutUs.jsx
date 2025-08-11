@@ -49,10 +49,10 @@ const MiniAboutUs = () => {
             </div>
           </motion.div>
 
-          {/* Right Image Collage */}
-          <div className="relative h-[450px] mt-12 lg:mt-0">
+          {/* Desktop Image Collage */}
+          <div className="hidden lg:block relative h-[450px] mt-12 lg:mt-0">
             <motion.div
-              className="absolute top-0 right-0 w-full lg:w-4/5 h-4/5"
+              className="absolute top-0 right-0 w-4/5 h-4/5"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -65,7 +65,7 @@ const MiniAboutUs = () => {
               />
             </motion.div>
             <motion.div
-              className="absolute bottom-0 left-0 w-full sm:w-3/4 lg:w-3/5 h-3/5"
+              className="absolute bottom-0 left-0 w-3/5 h-3/5"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -76,6 +76,42 @@ const MiniAboutUs = () => {
                 alt="Woman on beach"
                 className="w-full h-full object-cover rounded-md shadow-2xl"
               />
+            </motion.div>
+          </div>
+
+          {/* Mobile/Tablet Image Layout */}
+          <div className="lg:hidden mt-8 space-y-4">
+            {/* Main Large Image */}
+            <motion.div
+              className="relative h-64 sm:h-80"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            >
+              <img
+                src="/swaranjali9.avif"
+                alt="Tropical Coconuts"
+                className="w-full h-full object-cover rounded-md shadow-lg"
+              />
+            </motion.div>
+
+            {/* Secondary Smaller Image */}
+            <motion.div
+              className="relative h-40 sm:h-48 w-3/4 ml-auto"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+            >
+              <img
+                src="/swaranjali8.avif"
+                alt="Woman on beach"
+                className="w-full h-full object-cover rounded-md shadow-xl"
+              />
+              
+              {/* Decorative overlay for visual interest */}
+              <div className="absolute -top-2 -left-2 w-full h-full bg-gradient-to-br from-[#6D2C2C]/20 to-transparent rounded-md -z-10"></div>
             </motion.div>
           </div>
         </div>
